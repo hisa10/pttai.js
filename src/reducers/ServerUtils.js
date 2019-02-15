@@ -689,7 +689,7 @@ export const downloadFile = (boardId, mediaId) => {
     [api.CALL_API]: {
       endpoint: PTTAI_APP_ROOT + '/api/file/' + boardId + '/' + mediaId,
       method: 'get',
-      files: { 'gzip': true },
+      files: [new Blob()],
       gzip: true,
     }
   }
