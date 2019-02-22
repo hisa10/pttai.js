@@ -264,7 +264,9 @@ class FriendChatComponent extends PureComponent {
                       inviteInfo.keyUpdateTS_T = invite.data('update-ts')
                       inviteInfo.keyExpiration = invite.data('expiration')
 
-                      if (!isUser && boardList.findIndex(each => each.ID === inviteInfo.boardId) >= 0) {
+                      let inviteBoard = boardList.find(each => each.ID === inviteInfo.boardId)
+
+                      if (!isUser && inviteBoard && inviteBoard.Status < constants.STATUS_ARRAY.indexOf('StatusDeleted')) {
                         messageHtml = (<span>
                           <FormattedMessage
                             id="friend-chat-component.action1"
